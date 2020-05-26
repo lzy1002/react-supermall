@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {HashRouter} from "react-router-dom";
+
+import "./assets/stylus/index.styl";
 
 import App from "./App.jsx";
 
 ReactDOM.render(
-  <div>
+  <HashRouter>
     <App/>
-  </div>,
+  </HashRouter>,
   document.getElementById('root')
 );
