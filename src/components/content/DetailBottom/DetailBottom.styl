@@ -1,0 +1,40 @@
+.bottom-wrapper
+  position fixed
+  left 0
+  right 0
+  bottom 0
+  height 50px
+  border-top 1px solid #eee
+  display flex
+  .bottom-left
+    flex 1
+    display flex
+    .left-item
+      flex 1
+      height 50px
+      display flex
+      flex-direction column
+      justify-content center
+      align-items center
+      .icon
+        display inline-block
+        width 25px
+        height 25px
+        background-image url("../../../assets/images/detail/detail_bottom.png")
+        background-size 100%
+        background-repeat no-repeat
+        background-position 0 -30px
+  .bottom-right
+    flex 1
+    display flex
+    div
+      flex 1
+      height 50px
+      text-align center
+      line-height 50px
+      &.go-cart
+        color #333
+        background-color yellow
+      &.buy
+        color #fff
+        background-color orangered

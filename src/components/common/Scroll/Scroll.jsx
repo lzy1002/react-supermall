@@ -6,13 +6,17 @@ class Scroll extends React.Component {
   static defaultProps = {
     probeType: 0,
     click: true,
-    pullUpLoad: false
+    pullUpLoad: false,
+    watchPosition: () => {},
+    handlePullUp: () => {}
   };
 
   static propTypes = {
     probeType: propTypes.number,
     click: propTypes.bool,
-    pullUpLoad: propTypes.bool
+    pullUpLoad: propTypes.bool,
+    watchPosition: propTypes.func,
+    handlePullUp: propTypes.func
   };
 
   constructor(props) {
@@ -30,13 +34,13 @@ class Scroll extends React.Component {
 
     if(this.props.probeType >= 2) {
       this.scroll.on("scroll", (position) => {
-
+        this.props.watchPosition(position);
       });
     }
 
     if(this.props.pullUpLoad) {
       this.scroll.on("pullingUp", () => {
-        console.log("上拉加载触发");
+        this.props.handlePullUp();
         this.scroll.finishPullUp();
       })
     }
@@ -50,7 +54,14 @@ class Scroll extends React.Component {
   }
 
   refresh() {
-    this.scroll.refresh();
+    window.clearTimeout(this.timeId);
+    this.timeId = window.setTimeout(() => {
+      this.scroll.refresh();
+    }, 300);
+  }
+
+  scrollTo() {
+    this.scroll.scrollTo(...arguments);
   }
 
   render() {

@@ -22,7 +22,10 @@ class TabControl extends React.Component {
   }
 
   changeType(index, type) {
-    this.props.changeProductType(type);
+    this.props.changeProductType(type, index);
+  }
+
+  changeIndex(index) {
     this.setState({
       activeIndex: index
     })

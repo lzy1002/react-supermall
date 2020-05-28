@@ -6,14 +6,22 @@ import "./TopBar.styl";
 class TopBar extends React.Component {
   static defaultProps = {
     left: null,
-    center: null,
-    right: null
+    centerList: [],
+    right: null,
+    bgColor: "#fff",
+    textColor: "#fff",
+    pageMove: () => {},
+    activeIndex: -1
   };
 
   static propTypes = {
     left: propTypes.element,
-    center: propTypes.element,
-    right: propTypes.element
+    centerList: propTypes.array,
+    right: propTypes.element,
+    bgColor: propTypes.string,
+    textColor: propTypes.string,
+    pageMove: propTypes.func,
+    activeIndex: propTypes.number
   };
 
   constructor(props) {
@@ -21,14 +29,22 @@ class TopBar extends React.Component {
 
   }
 
+  handleCenterItemClick(index) {
+    this.props.pageMove(index);
+  }
+
   render() {
     return (
-      <div className="topbar-wrapper">
+      <div className="topbar-wrapper" style={{backgroundColor: this.props.bgColor, color: this.props.textColor}}>
         <div className="topbar-left">
           {this.props.left}
         </div>
         <div className="topbar-center">
-          {this.props.center}
+          {
+            this.props.centerList.map((item, index) => (
+              <div style={{color: this.props.activeIndex === index ? "lightpink" : ""}} key={item} onClick={this.handleCenterItemClick.bind(this, index)}>{item}</div>
+            ))
+          }
         </div>
         <div className="topbar-right">
           {this.props.right}

@@ -7,11 +7,13 @@ import GoodsItem from "../GoodsItem/GoodsItem.jsx";
 
 class GoodsBox extends React.Component {
   static defaultProps = {
-    goodsList: []
+    goodsList: [],
+    refresh: () => {}
   };
 
   static propTypes = {
-    goodsList: propTypes.array
+    goodsList: propTypes.array,
+    refresh: propTypes.func
   };
 
   constructor(props) {
@@ -24,7 +26,7 @@ class GoodsBox extends React.Component {
       <div className="goods-box">
         {
           this.props.goodsList.map((item) => (
-            <GoodsItem key={item.acm} goodsItem={item}/>
+            <GoodsItem key={item.acm} goodsItem={item} refresh={this.props.refresh}/>
           ))
         }
       </div>

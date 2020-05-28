@@ -5,6 +5,7 @@ import Home from "./views/Home/Home.jsx";
 import Category from "./views/Category/Category.jsx";
 import Cart from "./views/Cart/Cart.jsx";
 import Profile from "./views/Profile/Profile.jsx";
+import Detail from "./views/Detail/Detail.jsx";
 
 import TabBar from "./components/content/TabBar/TabBar.jsx";
 
@@ -22,6 +23,7 @@ class App extends React.Component {
           <Route path="/category" component={Category}/>
           <Route path="/cart" component={Cart}/>
           <Route path="/profile" component={Profile}/>
+          <Route path="/detail/:id" component={Detail}/>
         </Switch>
         <TabBar/>
       </div>
