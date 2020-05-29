@@ -28,7 +28,7 @@ class GoodsItem extends React.Component {
     return (
       <Link to={`/detail/${this.props.goodsItem.iid || this.props.goodsItem.item_id}`} className="goodsitem-wrapper">
         <div className="image-box">
-          <img src={this.props.goodsItem.show ? this.props.goodsItem.show.img : this.props.goodsItem.image} onLoad={this.imageLoad.bind(this, this.props.refresh)} alt=""/>
+          <img src={this.props.goodsItem.show ? this.props.goodsItem.show.img : this.props.goodsItem.image ? this.props.goodsItem.image : this.props.goodsItem.img} onLoad={this.imageLoad.bind(this, this.props.refresh)} alt=""/>
         </div>
         <p className="goods-name">{this.props.goodsItem.title}</p>
         <p className="price-box">￥{this.props.goodsItem.price}</p>
